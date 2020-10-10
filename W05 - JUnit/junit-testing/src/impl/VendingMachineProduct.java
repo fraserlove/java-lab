@@ -8,16 +8,22 @@ import interfaces.IVendingMachineProduct;
  */
 public class VendingMachineProduct implements IVendingMachineProduct {
 
+    String laneCode;
+    String description;
+
+    public VendingMachineProduct(String laneCode, String description) {
+        this.laneCode = laneCode;
+        this.description = description;
+    }
+
     @Override
     public String getLaneCode() {
-        // TODO Auto-generated method stub
-        return null;
+        return laneCode;
     }
 
     @Override
     public String getDescription() {
-        // TODO Auto-generated method stub
-        return null;
+        return description;
     }
 
 }

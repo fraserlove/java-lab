@@ -10,34 +10,43 @@ import interfaces.IProductRecord;
  */
 public class ProductRecord implements IProductRecord {
 
+    IVendingMachineProduct vendingMachineProduct;
+    int noSales;
+    int noAvailable;
+
+    public ProductRecord(IVendingMachineProduct vendingMachineProduct) {
+        this.vendingMachineProduct = vendingMachineProduct;
+    }
+
     @Override
     public IVendingMachineProduct getProduct() {
-        // TODO Auto-generated method stub
-        return null;
+        return vendingMachineProduct;
     }
 
     @Override
     public int getNumberOfSales() {
-        // TODO Auto-generated method stub
-        return 0;
+        return noSales;
     }
 
     @Override
     public int getNumberAvailable() {
-        // TODO Auto-generated method stub
-        return 0;
+        return noAvailable;
     }
 
     @Override
     public void addItem() {
-        // TODO Auto-generated method stub
-
+        noAvailable++;
     }
 
     @Override
     public void buyItem() throws ProductUnavailableException {
-        // TODO Auto-generated method stub
-
+        if (noAvailable > 0) {
+            noSales++;
+            noAvailable--;
+        }
+        else {
+            throw new ProductUnavailableException();
+        }
     }
 
 }

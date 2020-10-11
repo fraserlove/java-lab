@@ -23,4 +23,11 @@ public class Tests extends AbstractFactoryClient {
         IVendingMachineProduct vendingMachineProduct = getFactory().makeVendingMachineProduct("A1", "Haggis Crisps");
         assertNotNull(vendingMachineProduct);
     }
+
+    @Test
+    public void productRecordNotNull() {
+        IVendingMachineProduct vendingMachineProduct = getFactory().makeVendingMachineProduct("A1", "Haggis Crisps");
+        IProductRecord productRecord = getFactory().makeProductRecord(vendingMachineProduct);
+        assertNotNull(productRecord);
+    }
 }

@@ -23,7 +23,7 @@ public class VendingMachine extends AbstractFactoryClient implements IVendingMac
     @Override
     public void registerProduct(IVendingMachineProduct vendingMachineProduct) throws LaneCodeAlreadyInUseException {
         IProductRecord product = new ProductRecord(vendingMachineProduct);
-        if (Products.keySet().contains(vendingMachineProduct.getLaneCode())) {
+        if (!Products.keySet().contains(vendingMachineProduct.getLaneCode())) {
             Products.put(vendingMachineProduct.getLaneCode(), product);
         }
         else {

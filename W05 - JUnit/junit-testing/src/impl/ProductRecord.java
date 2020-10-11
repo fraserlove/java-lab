@@ -16,6 +16,8 @@ public class ProductRecord implements IProductRecord {
 
     public ProductRecord(IVendingMachineProduct vendingMachineProduct) {
         this.vendingMachineProduct = vendingMachineProduct;
+        noSales = 0;
+        noAvailable = 0;
     }
 
     @Override

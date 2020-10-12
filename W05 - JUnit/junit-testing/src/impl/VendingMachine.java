@@ -8,7 +8,6 @@ import common.ProductUnavailableException;
 import interfaces.IVendingMachineProduct;
 import interfaces.IVendingMachine;
 import interfaces.IProductRecord;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -17,14 +16,14 @@ import java.util.HashMap;
  */
 public class VendingMachine extends AbstractFactoryClient implements IVendingMachine {
 
-    HashMap<String, IProductRecord> Products = new HashMap<>();
-    int noOfItems = 0;
+    private HashMap<String, IProductRecord> products = new HashMap<>();
+    private int noOfItems = 0;
 
     @Override
     public void registerProduct(IVendingMachineProduct vendingMachineProduct) throws LaneCodeAlreadyInUseException {
         IProductRecord product = new ProductRecord(vendingMachineProduct);
-        if (!Products.keySet().contains(vendingMachineProduct.getLaneCode())) {
-            Products.put(vendingMachineProduct.getLaneCode(), product);
+        if (!products.keySet().contains(vendingMachineProduct.getLaneCode())) {
+            products.put(vendingMachineProduct.getLaneCode(), product);
         }
         else {
             throw new LaneCodeAlreadyInUseException();
@@ -33,8 +32,8 @@ public class VendingMachine extends AbstractFactoryClient implements IVendingMac
 
     @Override
     public void unregisterProduct(IVendingMachineProduct vendingMachineProduct) throws LaneCodeNotRegisteredException {
-        if (Products.keySet().contains(vendingMachineProduct.getLaneCode())) {
-            Products.remove(vendingMachineProduct.getLaneCode());
+        if (products.keySet().contains(vendingMachineProduct.getLaneCode())) {
+            products.remove(vendingMachineProduct.getLaneCode());
         }
         else {
             throw new LaneCodeNotRegisteredException();
@@ -43,8 +42,8 @@ public class VendingMachine extends AbstractFactoryClient implements IVendingMac
 
     @Override
     public void addItem(String laneCode) throws LaneCodeNotRegisteredException {
-        if (Products.keySet().contains(laneCode)) {
-            Products.get(laneCode).addItem();
+        if (products.keySet().contains(laneCode)) {
+            products.get(laneCode).addItem();
             noOfItems++;
         }
         else {
@@ -54,8 +53,8 @@ public class VendingMachine extends AbstractFactoryClient implements IVendingMac
 
     @Override
     public void buyItem(String laneCode) throws ProductUnavailableException, LaneCodeNotRegisteredException {
-        if (Products.keySet().contains(laneCode)) {
-            Products.get(laneCode).buyItem();
+        if (products.keySet().contains(laneCode)) {
+            products.get(laneCode).buyItem();
             noOfItems--;
         }
         else {
@@ -65,7 +64,7 @@ public class VendingMachine extends AbstractFactoryClient implements IVendingMac
 
     @Override
     public int getNumberOfProducts() {
-        return Products.size();
+        return products.size();
     }
 
     @Override
@@ -75,25 +74,41 @@ public class VendingMachine extends AbstractFactoryClient implements IVendingMac
 
     @Override
     public int getNumberOfItems(String laneCode) throws LaneCodeNotRegisteredException {
-        return Products.get(laneCode).getNumberAvailable();
+        if (products.keySet().contains(laneCode)) {
+            return products.get(laneCode).getNumberAvailable();
+        }
+        else {
+            throw new LaneCodeNotRegisteredException();
+        }
     }
 
     @Override
     public int getNumberOfSales(String laneCode) throws LaneCodeNotRegisteredException {
-        return Products.get(laneCode).getNumberOfSales();
+        if (products.keySet().contains(laneCode)) {
+            return products.get(laneCode).getNumberOfSales();
+        }
+        else {
+            throw new LaneCodeNotRegisteredException();
+        }
     }
 
     @Override
     public IVendingMachineProduct getMostPopular() throws LaneCodeNotRegisteredException {
-        // Most popular meaning highest sales, if multiple products have the same number of sales the method picks
-        // the most popular product to be the first one it comes across.
-        IProductRecord mostPopular = null;
-        for (IProductRecord record : Products.values()) {
-            if (record.getNumberOfSales() > mostPopular.getNumberOfSales()) {
-                mostPopular = record;
+        if (products.keySet().size() > 0) {
+            // If multiple products have the same number of sales the method picks the most popular product to
+            // be the first one it comes across.
+            // Setting the initial most popular IProductRecord to the first one present in the hashmap
+            IProductRecord mostPopular = (IProductRecord) products.values().toArray()[0];
+            for (IProductRecord record : products.values()) {
+                if (record.getNumberOfSales() > mostPopular.getNumberOfSales()) {
+                    mostPopular = record;
+                }
             }
+            return mostPopular.getProduct();
         }
-        return mostPopular.getProduct();
+        else {
+            throw new LaneCodeNotRegisteredException();
+        }
     }
 
 }

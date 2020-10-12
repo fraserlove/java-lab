@@ -8,9 +8,14 @@ import interfaces.IVendingMachineProduct;
  */
 public class VendingMachineProduct implements IVendingMachineProduct {
 
-    String laneCode;
-    String description;
+    private String laneCode;
+    private String description;
 
+    /**
+     * Constructor method initialises the two attributes mentioned below.
+     * @param laneCode a string used to identify which lane the product is in
+     * @param description a string used to identify and describe the object
+     */
     public VendingMachineProduct(String laneCode, String description) {
         this.laneCode = laneCode;
         this.description = description;

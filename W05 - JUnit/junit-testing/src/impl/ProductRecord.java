@@ -10,10 +10,14 @@ import interfaces.IProductRecord;
  */
 public class ProductRecord implements IProductRecord {
 
-    IVendingMachineProduct vendingMachineProduct;
-    int noSales;
-    int noAvailable;
+    private IVendingMachineProduct vendingMachineProduct;
+    private int noSales;
+    private int noAvailable;
 
+    /**
+     * Constructor method initialises the vendingMachineProduct to the IVendingMachineObjet passed in.
+     * @param vendingMachineProduct specifies the product related to this IProductRecord
+     */
     public ProductRecord(IVendingMachineProduct vendingMachineProduct) {
         this.vendingMachineProduct = vendingMachineProduct;
         noSales = 0;

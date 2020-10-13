@@ -98,15 +98,15 @@ public class IProductRecordTests extends AbstractFactoryClient {
      */
     @Test
     public void checkNoAvailable() throws ProductUnavailableException {
-        assertEquals(record.getNumberAvailable(), 0);
+        assertEquals(0, record.getNumberAvailable());
         record.addItem();
-        assertEquals(record.getNumberAvailable(), 1);
+        assertEquals(1, record.getNumberAvailable());
         record.addItem();
-        assertEquals(record.getNumberAvailable(), 2);
+        assertEquals(2, record.getNumberAvailable());
         record.buyItem();
-        assertEquals(record.getNumberAvailable(), 1);
+        assertEquals(1, record.getNumberAvailable());
         record.buyItem();
-        assertEquals(record.getNumberAvailable(), 0);
+        assertEquals(0, record.getNumberAvailable());
     }
 
     /**
@@ -116,15 +116,15 @@ public class IProductRecordTests extends AbstractFactoryClient {
      */
     @Test
     public void checkNoSales() throws ProductUnavailableException {
-        assertEquals(record.getNumberOfSales(), 0);
+        assertEquals(0, record.getNumberOfSales());
         record.addItem();
         record.addItem();
         record.addItem();
-        assertEquals(record.getNumberOfSales(), 0);
+        assertEquals(0, record.getNumberOfSales());
         record.buyItem();
-        assertEquals(record.getNumberOfSales(), 1);
+        assertEquals(1, record.getNumberOfSales());
         record.buyItem();
-        assertEquals(record.getNumberOfSales(), 2);
+        assertEquals(2, record.getNumberOfSales());
     }
 
     /**
@@ -133,11 +133,11 @@ public class IProductRecordTests extends AbstractFactoryClient {
      */
     @Test
     public void checkNoSalesWithProductUnavailable() {
-        assertEquals(record.getNumberOfSales(), 0);
+        assertEquals(0, record.getNumberOfSales());
         assertThrows(ProductUnavailableException.class, () -> {
             record.buyItem();
         });
-        assertEquals(record.getNumberOfSales(), 0);
+        assertEquals(0, record.getNumberOfSales());
     }
 
     /**
@@ -146,11 +146,11 @@ public class IProductRecordTests extends AbstractFactoryClient {
      */
     @Test
     public void checkNoAvailableWithProductUnavailable() {
-        assertEquals(record.getNumberAvailable(), 0);
+        assertEquals(0, record.getNumberAvailable());
         assertThrows(ProductUnavailableException.class, () -> {
             record.buyItem();
         });
-        assertEquals(record.getNumberAvailable(), 0);
+        assertEquals(0, record.getNumberAvailable());
     }
 
     /**
@@ -158,12 +158,12 @@ public class IProductRecordTests extends AbstractFactoryClient {
      */
     @Test
     public void largeCheckNoAvailableTest() {
-        assertEquals(record.getNumberAvailable(), 0);
+        assertEquals(0, record.getNumberAvailable());
         for (int i = 0; i < 1000; i++) {
             record.addItem();
             assertEquals(record.getNumberAvailable(), i + 1);
         }
-        assertEquals(record.getNumberAvailable(), 1000);
+        assertEquals(1000, record.getNumberAvailable());
     }
 
     /**
@@ -172,11 +172,11 @@ public class IProductRecordTests extends AbstractFactoryClient {
      */
     @Test
     public void largeCheckNoSalesTest() throws ProductUnavailableException {
-        assertEquals(record.getNumberOfSales(), 0);
+        assertEquals(0, record.getNumberOfSales());
         for (int i = 0; i < 1000; i++) {
             record.addItem();
             record.buyItem();
         }
-        assertEquals(record.getNumberOfSales(), 1000);
+        assertEquals(1000, record.getNumberOfSales());
     }
 }

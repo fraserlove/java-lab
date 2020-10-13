@@ -1,6 +1,5 @@
 package impl;
 
-
 import common.AbstractFactoryClient;
 import common.LaneCodeAlreadyInUseException;
 import common.LaneCodeNotRegisteredException;
@@ -16,8 +15,9 @@ import java.util.HashMap;
  */
 public class VendingMachine extends AbstractFactoryClient implements IVendingMachine {
 
+    // Most efficient and optimal Java collection for storing IProductRecords with O(1) contains
     private HashMap<String, IProductRecord> products = new HashMap<>();
-    private int noOfItems = 0;
+    private int noOfItems = 0; // Allows for constant time getTotalNumberOfItems()
 
     @Override
     public void registerProduct(IVendingMachineProduct vendingMachineProduct) throws LaneCodeAlreadyInUseException {
@@ -94,10 +94,10 @@ public class VendingMachine extends AbstractFactoryClient implements IVendingMac
 
     @Override
     public IVendingMachineProduct getMostPopular() throws LaneCodeNotRegisteredException {
+        // If multiple products have the same number of sales the method picks the most popular product to be the first
+        // one it comes across.
         if (products.keySet().size() > 0) {
-            // If multiple products have the same number of sales the method picks the most popular product to
-            // be the first one it comes across.
-            // Setting the initial most popular IProductRecord to the first one present in the hashmap
+            // Setting the initial most popular IProductRecord to the first one present in the hashmap.
             IProductRecord mostPopular = (IProductRecord) products.values().toArray()[0];
             for (IProductRecord record : products.values()) {
                 if (record.getNumberOfSales() > mostPopular.getNumberOfSales()) {

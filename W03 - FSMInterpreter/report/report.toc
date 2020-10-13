@@ -1,0 +1,13 @@
+\contentsline {section}{\numberline {1}Introduction}{2}
+\contentsline {section}{\numberline {2}Design}{2}
+\contentsline {subsection}{\numberline {2.1}FSMInterpreter Class}{3}
+\contentsline {subsection}{\numberline {2.2}FiniteStateMachine Class}{3}
+\contentsline {subsubsection}{\numberline {2.2.1}The load() method}{4}
+\contentsline {subsubsection}{\numberline {2.2.2}The isLayoutValid() method}{4}
+\contentsline {subsubsection}{\numberline {2.2.3}The isLogicValid() method}{4}
+\contentsline {subsubsection}{\numberline {2.2.4}The run() method}{5}
+\contentsline {subsection}{\numberline {2.3}StateInputKey Class}{5}
+\contentsline {section}{\numberline {3}Testing}{5}
+\contentsline {subsection}{\numberline {3.1}Basic Stacscheck Tests}{5}
+\contentsline {subsection}{\numberline {3.2}Comprehensive Testing using Stacscheck}{5}
+\contentsline {section}{\numberline {4}Conclusion}{14}

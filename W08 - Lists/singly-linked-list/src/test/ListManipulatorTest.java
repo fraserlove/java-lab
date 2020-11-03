@@ -197,6 +197,7 @@ public abstract class ListManipulatorTest {
     public void reduce() {
         assertEquals(0, manipulator.reduce(null, add, 0));
         assertEquals(element3 + element1 + element2 + element1, manipulator.reduce(list4, add, 0));
+        //assertEquals(element3 + element1 + element2 + element1 + 23, manipulator.reduce(list4, add, 23));
     }
 
     /**
@@ -366,6 +367,8 @@ public abstract class ListManipulatorTest {
         assertTrue(manipulator.equals(expectedFilterList4GreaterElement1, manipulator.filter(list4, element -> (Integer) element > element1)));
 
         ListNode expectedFilterList4SmallerEqualElement1 = new ListNode(element3, new ListNode(element1, new ListNode(element1)));
+        System.out.println(element1 + "<=" + manipulator.convertToString(list4));
+        System.out.println(manipulator.convertToString(expectedFilterList4SmallerEqualElement1) + " == " + manipulator.convertToString(manipulator.filter(list4, element -> (Integer) element <= element1)));
         assertTrue(manipulator.equals(expectedFilterList4SmallerEqualElement1, manipulator.filter(list4, element -> (Integer) element <= element1)));
 
     }

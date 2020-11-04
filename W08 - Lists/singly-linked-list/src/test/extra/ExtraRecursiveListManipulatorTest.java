@@ -1,4 +1,4 @@
-package test;
+package test.extra;
 
 import impl.RecursiveListManipulator;
 import interfaces.IListManipulator;
@@ -7,7 +7,7 @@ import interfaces.IListManipulator;
  * Concrete JUnit test class (subclass of ListManipulatorTest) for testing the RecursiveListManipulator implementation.
  *
  */
-public class RecursiveListManipulatorTest extends ListManipulatorTest {
+public class ExtraRecursiveListManipulatorTest extends ExtraListManipulatorTest {
 
     @Override
     public IListManipulator makeListManipulator() {

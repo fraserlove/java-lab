@@ -1,4 +1,4 @@
-package test;
+package test.base;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -21,21 +21,15 @@ import interfaces.IMapTransformation;
 public abstract class ListManipulatorTest {
 
     private final int element1 = 3;
-
     private final int element2 = 75;
-
     private final int element3 = -31;
-
     private final int element4 = 7;
 
     private IListManipulator manipulator;
 
     private ListNode list1;
-
     private ListNode list2;
-
     private ListNode list3;
-
     private ListNode list4;
 
     private static final int MINUSFOURTEEN = -14;
@@ -165,7 +159,6 @@ public abstract class ListManipulatorTest {
         assertFalse(manipulator.equals(list1, list2));
     }
 
-
     /**
      * Tests the append method in the IListManipulator implementation.
      */
@@ -197,7 +190,6 @@ public abstract class ListManipulatorTest {
     public void reduce() {
         assertEquals(0, manipulator.reduce(null, add, 0));
         assertEquals(element3 + element1 + element2 + element1, manipulator.reduce(list4, add, 0));
-        //assertEquals(element3 + element1 + element2 + element1 + 23, manipulator.reduce(list4, add, 23));
     }
 
     /**
@@ -295,7 +287,6 @@ public abstract class ListManipulatorTest {
         assertTrue(manipulator.equals(new ListNode(MINUSFOURTEEN, new ListNode(MINUSTWO, new ListNode(THREE))), manipulator.sort(list_c, int_comparator)));
     }
 
-
     /**
      * Tests the reverse method in the IListManipulator implementation.
      */
@@ -307,7 +298,6 @@ public abstract class ListManipulatorTest {
         ListNode expectedRevereseOfList4 = new ListNode(element1, new ListNode(element2, new ListNode(element1, new ListNode(element3))));
         assertTrue(manipulator.equals(expectedRevereseOfList4, manipulator.reverse(list4)));
     }
-
 
     /**
      * Tests the split method in the IListManipulator implementation.
@@ -352,7 +342,6 @@ public abstract class ListManipulatorTest {
         assertTrue(manipulator.equals(expectedSplitList4At3Sublist2, (ListNode) manipulator.split(list4, THREE).next.element));
     }
 
-
     /**
      * Tests the filter method in the IListManipulator implementation.
      */
@@ -367,14 +356,9 @@ public abstract class ListManipulatorTest {
         assertTrue(manipulator.equals(expectedFilterList4GreaterElement1, manipulator.filter(list4, element -> (Integer) element > element1)));
 
         ListNode expectedFilterList4SmallerEqualElement1 = new ListNode(element3, new ListNode(element1, new ListNode(element1)));
-        System.out.println(element1 + "<=" + manipulator.convertToString(list4));
-        System.out.println(manipulator.convertToString(expectedFilterList4SmallerEqualElement1) + " == " + manipulator.convertToString(manipulator.filter(list4, element -> (Integer) element <= element1)));
         assertTrue(manipulator.equals(expectedFilterList4SmallerEqualElement1, manipulator.filter(list4, element -> (Integer) element <= element1)));
 
     }
-
-
-
 
     /**
      * This ITransformation is to permit the map method to add a 1 to each element in the list.
@@ -386,7 +370,6 @@ public abstract class ListManipulatorTest {
             return (Integer) element + 1;
         }
     };
-
 
     /**
      * This IOperator is to permit the reduce method to perform addition when combining 2 elements.
@@ -409,5 +392,4 @@ public abstract class ListManipulatorTest {
             return (Integer) object1 - (Integer) object2;
         }
     };
-
 }

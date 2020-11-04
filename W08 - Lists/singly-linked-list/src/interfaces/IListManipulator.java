@@ -176,6 +176,4 @@ public interface IListManipulator {
      * @return a new list containing only those elements from the original list meeting the specified filter condition in the same order as in the original list
      */
     ListNode filter(ListNode head, IFilterCondition condition);
-
-
 }

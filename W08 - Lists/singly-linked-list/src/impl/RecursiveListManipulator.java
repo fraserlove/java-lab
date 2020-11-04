@@ -32,7 +32,7 @@ public class RecursiveListManipulator implements IListManipulator {
      */
     @Override
     public boolean contains(ListNode head, Object element) {
-        return head != null && (head.element.equals(element) || contains(head.next, element));
+        return head != null && (head.element != null && head.element.equals(element) || contains(head.next, element));
     }
 
     /*
@@ -43,7 +43,7 @@ public class RecursiveListManipulator implements IListManipulator {
         if (head == null) {
             return 0;
         }
-        if (!head.element.equals(element)) {
+        if (head.element == null || !head.element.equals(element)) {
             return count(head.next, element);
         }
         return 1 + count(head.next, element);
@@ -95,7 +95,7 @@ public class RecursiveListManipulator implements IListManipulator {
         if (head1 == null || head2 == null) {
             return head1 == head2;
         }
-        if (!head1.equals(head2)) { // Checking if nodes are equal (specifically if elements are equal)
+        if (head1.element != null && !head1.equals(head2)) { // Checking if nodes are equal (specifically if elements are equal)
             return false;
         }
         return equals(head1.next, head2.next);
@@ -215,17 +215,17 @@ public class RecursiveListManipulator implements IListManipulator {
     }
 
     /*
-    A recursive function that returns a boolean value, stating if the linked list is perfectly circular (not just
-    cyclic). This method uses a recursive version of floyd's cycle-finding algorithm with a O(n) time complexity and
+    A recursive method that returns a boolean value, stating if the linked list is perfectly circular (not just
+    cyclic). This method uses a recursive version of Floyd's cycle-finding algorithm with a O(n) time complexity and
     O(1) space complexity. This algorithm entails moving through the list recursively with a listNode that moves round
-    quickly and one that moves round slowly. If at any point the slow listNode equals the large listNode the a loop must
+    quickly and one that moves round slowly. If at any point the slow listNode equals the fast listNode the a loop must
     be present within the list. The method then checks if both the fast and slow and head listNode are all equal, since
     if the loop is cyclic and cycles right round back to the head of the list then it is perfectly circular. If at any
     point the fast listNode points to a value of null, then the the method returns false, since if the loop is cyclic,
     no endpoint should be able to be reached.
      */
     private boolean isCircular(ListNode head, ListNode fast, ListNode slow) {
-        if (fast == null || fast.next == null) {  // Aan empty list or single node list is not considered circular
+        if (fast == null || fast.next == null) {  // An empty list or single node list is not considered circular
             return false;
         }
         if (slow == fast) {
@@ -246,10 +246,10 @@ public class RecursiveListManipulator implements IListManipulator {
     }
 
     /*
-    A recursive function that returns a boolean value, stating if the linked list is cyclic (has a loop in it). This
-    method uses a recursive version of floyd's cycle-finding algorithm with a O(n) time complexity and O(1) space
+    A recursive method that returns a boolean value, stating if the linked list is cyclic (has a loop in it). This
+    method uses a recursive version of Floyd's cycle-finding algorithm with a O(n) time complexity and O(1) space
     complexity. This algorithm entails moving through the list recursively with a listNode that moves round quickly and
-    one that moves round slowly. If at any point the slow listNode equals the large listNode the a loop must be present
+    one that moves round slowly. If at any point the slow listNode equals the fast listNode the a loop must be present
     within the list and so the method returns true. If at any point the fast listNode points to a value of null, then
     the the method returns false, since if the loop is cyclic, no endpoint should be able to be reached.
      */
@@ -371,13 +371,13 @@ public class RecursiveListManipulator implements IListManipulator {
     of the old list has been reached, we return from the recursive method the list node that is the head of the new
     filtered list.
      */
-    private ListNode filter(ListNode newCurr, ListNode oldCurr, IFilterCondition condition) {
-        if (oldCurr == null) {
-            return newCurr;
+    private ListNode filter(ListNode newHead, ListNode head, IFilterCondition condition) {
+        if (head == null) {
+            return newHead;
         }
-        if (condition.isSatisfied(oldCurr.element)) {
-            newCurr = append(newCurr, new ListNode(oldCurr.element));
+        if (condition.isSatisfied(head.element)) {
+            newHead = append(newHead, new ListNode(head.element));
         }
-        return filter(newCurr, oldCurr.next, condition);
+        return filter(newHead, head.next, condition);
     }
 }

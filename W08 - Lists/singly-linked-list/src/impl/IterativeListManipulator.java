@@ -35,7 +35,7 @@ public class IterativeListManipulator implements IListManipulator {
     @Override
     public boolean contains(ListNode head, Object element) {
         while (head != null) {
-            if (head.element.equals(element)) {
+            if (head.element != null && head.element.equals(element)) {
                 return true;
             }
             head = head.next;
@@ -50,7 +50,7 @@ public class IterativeListManipulator implements IListManipulator {
     public int count(ListNode head, Object element) {
         int count = 0;
         while (head != null) {
-            if (head.element.equals(element)) {
+            if (head.element != null && head.element.equals(element)) {
                 count++;
             }
             head = head.next;
@@ -106,7 +106,7 @@ public class IterativeListManipulator implements IListManipulator {
     @Override
     public boolean equals(ListNode head1, ListNode head2) {
         while (head1 != null && head2 != null) {
-            if (!head1.equals(head2)) { // Checking if nodes are equal (specifically if elements are equal)
+            if (head1.element != null && !head1.equals(head2)) { // Checking if nodes are equal (specifically if elements are equal)
                 return false;
             }
             head1 = head1.next;
@@ -141,7 +141,7 @@ public class IterativeListManipulator implements IListManipulator {
             while (curr != null && curr.next != null) { // Move to the end of the first list
                 curr = curr.next;
             }
-            curr.next = head2; // Set the last node of the first list to point to the first node in the second list.
+            curr.next = head2; // Set the last node of the first list to point to the head of the second list.
             return head1;
         }
         return head2;
@@ -192,7 +192,7 @@ public class IterativeListManipulator implements IListManipulator {
     }
 
     /*
-    Creates a new copy of the list iteratively and returns the head listNode of this copied. Is a private iterative
+    Creates a new copy of the list iteratively and returns the head listNode of this copied list. Is a private iterative
     method for use within the split method.
      */
     private ListNode copy(ListNode head) {
@@ -221,10 +221,10 @@ public class IterativeListManipulator implements IListManipulator {
     }
 
     /*
-    An iterative function that returns a boolean value, stating if the linked list is perfectly circular (not just
-    cyclic). This method uses an iterative version of floyd's cycle-finding algorithm with a O(n) time complexity and
+    An iterative method that returns a boolean value, stating if the linked list is perfectly circular (not just
+    cyclic). This method uses an iterative version of Floyd's cycle-finding algorithm with a O(n) time complexity and
     O(1) space complexity. This algorithm entails moving through the list iteratively with a listNode that moves round
-    quickly and one that moves round slowly. If at any point the slow listNode equals the large listNode the a loop must
+    quickly and one that moves round slowly. If at any point the slow listNode equals the fast listNode the a loop must
     be present within the list. The method then checks if both the fast and slow and head listNode are all equal, since
     if the loop is cyclic and cycles right round back to the head of the list then it is perfectly circular. If at any
     point the fast listNode points to a value of null, then the the method returns false, since if the loop is cyclic,
@@ -246,10 +246,10 @@ public class IterativeListManipulator implements IListManipulator {
     }
 
     /*
-    An iterative function that returns a boolean value, stating if the linked list is cyclic (has a loop in it). This
-    method uses an iterative version of floyd's cycle-finding algorithm with a O(n) time complexity and O(1) space
+    An iterative method that returns a boolean value, stating if the linked list is cyclic (has a loop in it). This
+    method uses an iterative version of Floyd's cycle-finding algorithm with a O(n) time complexity and O(1) space
     complexity. This algorithm entails moving through the list recursively with a listNode that moves round quickly and
-    one that moves round slowly. If at any point the slow listNode equals the large listNode the a loop must be present
+    one that moves round slowly. If at any point the slow listNode equals the fast listNode the a loop must be present
     within the list and so the method returns true. If at any point the fast listNode points to a value of null, then
     the the method returns false, since if the loop is cyclic, no endpoint should be able to be reached. Note that an
     empty list or single node list is not considered circular.
@@ -345,13 +345,13 @@ public class IterativeListManipulator implements IListManipulator {
      */
     @Override
     public ListNode filter(ListNode head, IFilterCondition condition) {
-        ListNode newCurr = null;
+        ListNode newHead = null;
         while (head != null) {
             if (condition.isSatisfied(head.element)) { // Add to new list if the element satisfies the condition
-                newCurr = append(newCurr, new ListNode(head.element));
+                newHead = append(newHead, new ListNode(head.element));
             }
             head = head.next;
         }
-        return newCurr;
+        return newHead;
     }
 }

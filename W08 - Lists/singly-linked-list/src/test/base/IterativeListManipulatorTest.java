@@ -1,4 +1,4 @@
-package test;
+package test.base;
 
 import impl.IterativeListManipulator;
 import interfaces.IListManipulator;

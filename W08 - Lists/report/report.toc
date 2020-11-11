@@ -1,0 +1,28 @@
+\contentsline {section}{\numberline {1}Introduction}{3}
+\contentsline {section}{\numberline {2}Design}{4}
+\contentsline {subsection}{\numberline {2.1}IterativeListManipulator class}{4}
+\contentsline {subsubsection}{\numberline {2.1.1}The Size() method}{5}
+\contentsline {subsubsection}{\numberline {2.1.2}The getFromFront() method}{5}
+\contentsline {subsubsection}{\numberline {2.1.3}The getFromBack() method}{5}
+\contentsline {subsubsection}{\numberline {2.1.4}The equals() method}{5}
+\contentsline {subsubsection}{\numberline {2.1.5}The containsDuplicates() method}{5}
+\contentsline {subsubsection}{\numberline {2.1.6}The append() method}{6}
+\contentsline {subsubsection}{\numberline {2.1.7}The reverse() method}{6}
+\contentsline {subsubsection}{\numberline {2.1.8}The split() method}{6}
+\contentsline {subsubsection}{\numberline {2.1.9}The copy() method}{6}
+\contentsline {subsubsection}{\numberline {2.1.10}The flatten() method}{6}
+\contentsline {subsubsection}{\numberline {2.1.11}The isCircular() method}{6}
+\contentsline {subsubsection}{\numberline {2.1.12}The containsCycles() method}{7}
+\contentsline {subsubsection}{\numberline {2.1.13}The sort() method}{7}
+\contentsline {subsubsection}{\numberline {2.1.14}The map() method}{7}
+\contentsline {subsubsection}{\numberline {2.1.15}The reduce() method}{7}
+\contentsline {subsubsection}{\numberline {2.1.16}The filter() method}{8}
+\contentsline {subsection}{\numberline {2.2}Recursive Implementation}{8}
+\contentsline {subsubsection}{\numberline {2.2.1}The reverse() method}{8}
+\contentsline {subsubsection}{\numberline {2.2.2}The split() method}{8}
+\contentsline {subsubsection}{\numberline {2.2.3}The isCircular() method}{9}
+\contentsline {subsubsection}{\numberline {2.2.4}The sort() method}{9}
+\contentsline {subsubsection}{\numberline {2.2.5}The filter() method}{9}
+\contentsline {section}{\numberline {3}Testing}{9}
+\contentsline {subsection}{\numberline {3.1}Extra IListManipulator Tests}{12}
+\contentsline {section}{\numberline {4}Conclusion}{13}

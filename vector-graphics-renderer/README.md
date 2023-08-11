@@ -14,6 +14,7 @@ it is created.
 
 ### Usage
 The application can be compiled and ran using the following commands inside the `/src` directory.
+
 ```bash
 javac VectorGraphicsRenderer.java
 ```

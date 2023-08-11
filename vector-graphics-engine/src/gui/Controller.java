@@ -39,7 +39,7 @@ public class Controller implements PropertyChangeListener {
      */
     private void initComponents() {
 
-        window = new JFrame("Vector Graphics Renderer");
+        window = new JFrame("Vector Graphics Engine");
         window.add(view, BorderLayout.CENTER);
         window.setSize (view.getDimensions()[0], view.getDimensions()[1]);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

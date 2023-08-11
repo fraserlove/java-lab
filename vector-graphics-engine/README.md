@@ -1,6 +1,6 @@
 # Vector Graphics Rendering
 A vector drawing application built using the Swing GUI API and a MVC (Model-View-Controller) framework. The MVC design pattern separates functionality between three main classes. The Model class contains the data to be displayed in some representation by the GUI. The View class displays the GUI and provides methods for receiving user input from the GUI. The Controller class manages
-Model and 3View class. It updates the Model class according to input received from the view and then updates the view with this information. A list of the features of this vector graphics renderer are detailed below:
+Model and 3View class. It updates the Model class according to input received from the view and then updates the view with this information. A list of the features of this vector graphics engine are detailed below:
 - Straight lines, rectangles, squares, ellipses, circles and triangles can be drawn
 - Diﬀerent line and ﬁll colours are supported.
 - Undo and redo function for drawing.
@@ -16,11 +16,11 @@ it is created.
 The application can be compiled and ran using the following commands inside the `/src` directory.
 
 ```bash
-javac VectorGraphicsRenderer.java
+javac VectorGraphicsEngine.java
 ```
 Then ran with the following command:
 ```bash
-java VectorGraphicsRenderer
+java VectorGraphicsEngine
 ```
 The application has a menu bar across the top of the screen. In the `file`
 menu are operations to save the vector graphic, load another vector graphic, 

@@ -12,7 +12,7 @@ be altered.
 it is created.
 - Vector graphics can be exported to a PNG ﬁle.
 
-### Usage
+## Usage
 The application can be compiled and ran using the following commands inside the `/src` directory.
 
 ```bash

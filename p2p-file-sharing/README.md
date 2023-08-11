@@ -6,7 +6,7 @@ A simple P2P file sharing application, allowing multiple peers running separate 
 - Reliably closes connections with clients which exit the network undexpectedly.
 - Search over all peers in the network for a file by its file name and return a list of peers sharing the file.
 
-### Usage
+## Usage
 The application can be compiled and ran using the following commands inside the `/src` directory.
 ```bash
 javac FileShareMain.java
@@ -35,12 +35,12 @@ All arguments, in fact, should be wrapped in quotation marks, this allows the ap
 
 To cleanly exit the application the `exit` command can be ran.
 
-### Commands
+## Commands
 To see a list of available commands and a description of their function, type `list` into the command line. The commands
 shown by `list` will change between connecting and disconnecting to a peer. For instance the `disconnect` command will 
 only be available if connected to a peer.
 
-#### Base commands (can be ran at any point)
+### Base commands (can be ran at any point)
 |Command|Usage|Function|
 |:---|:---|:---|
 |`exit`| |Quit the application.|
@@ -52,7 +52,7 @@ only be available if connected to a peer.
 |`search`|`search "file.ext"`|List all peers on the network hosting a specific file.|
 |`list`| |list all commands available to the user.|
 
-#### Connected commands (can only be ran when connected to a peer)
+### Connected commands (can only be ran when connected to a peer)
 |Command|Usage|Function|
 |:---|:---|:---|
 |`disconnect`| |Disconnect the peer currently connected to.|
@@ -64,6 +64,6 @@ only be available if connected to a peer.
 |:---|:---|:---|
 |`connect`| `connect "255.255.255.255"` |Connect to a peer with the specified address.|
 
-### Notes
+## Notes
 The `search` and `peers` commands scan for instances of the application of files on the local network. It 
 only scans computers the netmask `255.255.255.0`. Therefore, when running these commands, make sure that the application is running on two computers with the same IPv4 address up to the last byte.

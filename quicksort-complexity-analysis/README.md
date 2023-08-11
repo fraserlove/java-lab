@@ -3,7 +3,7 @@
 This project investigates the complexity of pathological cases surrounding the Quicksort sorting algorithm. This Quicksort implementation must be a not in-place implementation with the pivot being chosen as the last element of the list, a pathological case. The metric used to describe the sortedness of a list was chosen to be the edit distance, (minimum number of swaps needed to sort the list). This program generates lists according to this metric. The time it takes for Quicksort to sort generated lists of varying sortedness is then recorded and displayed as a graph. This graph shows the relation between sortedness and the execution time of Quicksort
 
 
-### Usage
+## Usage
 The program can be compiled and ran using the following commands inside the `/src` directory.
 1. **Compile Java from Source:**
 ```bash

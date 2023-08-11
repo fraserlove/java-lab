@@ -4,7 +4,8 @@ A collection of Java applications ranging from a finite state machine interprete
 
 ![alt text](https://i.ibb.co/MPsDWZ7/Screenshot-2023-08-11-at-19-50-42.png)
 
-### Installation and Setup
+## Installation and Setup
+
 1. **Clone the Repository:**
 ```bash
 git clone https://github.com/fraserlove/java-lab.git

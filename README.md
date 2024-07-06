@@ -2,8 +2,6 @@
 
 A collection of Java applications ranging from a finite state machine interpreter to a vector drawing application.
 
-![alt text](https://i.ibb.co/MPsDWZ7/Screenshot-2023-08-11-at-19-50-42.png)
-
 ## Installation and Usage
 
 1. **Clone the Repository:**
